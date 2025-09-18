@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cattle ID - Breed Recognition</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <i class="fas fa-cow header-icon"></i>
+                <h1>Cattle ID</h1>
+                <p>AI-Powered Breed Recognition</p>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Photo Capture Section -->
+            <section class="photo-section">
+                <div class="photo-container">
+                    <div id="imagePreview" class="image-preview">
+                        <i class="fas fa-camera preview-icon"></i>
+                        <p>Take or upload a photo to identify cattle breed</p>
+                    </div>
+                    <img id="previewImage" class="preview-image" style="display: none;" alt="Preview">
+                    <video id="camera" class="camera" autoplay playsinline style="display: none;"></video>
+                    <canvas id="canvas" style="display: none;"></canvas>
+                </div>
+
+                <div class="button-group">
+                    <button id="takePictureBtn" class="btn btn-primary">
+                        <i class="fas fa-camera"></i>
+                        <span>Take Photo</span>
+                    </button>
+                    <button id="uploadBtn" class="btn btn-secondary">
+                        <i class="fas fa-upload"></i>
+                        <span>Upload Photo</span>
+                    </button>
+                    <input type="file" id="fileInput" accept="image/*" style="display: none;">
+                </div>
+
+                <div class="action-buttons" style="display: none;">
+                    <button id="captureBtn" class="btn btn-success">
+                        <i class="fas fa-check"></i>
+                        Capture
+                    </button>
+                    <button id="retakeBtn" class="btn btn-outline">
+                        <i class="fas fa-redo"></i>
+                        Retake
+                    </button>
+                </div>
+
+                <button id="analyzeBtn" class="btn btn-analyze" style="display: none;">
+                    <i class="fas fa-search"></i>
+                    <span>Analyze Image</span>
+                </button>
+            </section>
+
+            <!-- Results Section -->
+            <section id="resultsSection" class="results-section" style="display: none;">
+                <h2>Prediction Results</h2>
+                <div id="predictionResults" class="prediction-results"></div>
+                <div class="confidence-meter">
+                    <div class="confidence-label">Confidence: <span id="confidenceValue">0%</span></div>
+                    <div class="confidence-bar">
+                        <div id="confidenceFill" class="confidence-fill"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Loading Indicator -->
+            <div id="loadingIndicator" class="loading-indicator" style="display: none;">
+                <div class="spinner"></div>
+                <p>Analyzing image...</p>
+            </div>
+
+            <!-- History Section -->
+            <section class="history-section">
+                <div class="history-header">
+                    <h2>Recent Predictions</h2>
+                    <button id="clearHistoryBtn" class="btn-clear">
+                        <i class="fas fa-trash"></i>
+                        Clear All
+                    </button>
+                </div>
+                <div id="historyContainer" class="history-container">
+                    <div class="empty-history">
+                        <i class="fas fa-history"></i>
+                        <p>No predictions yet</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Toast Notifications -->
+    <div id="toast" class="toast"></div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest"></script>
+    <script src="script.js"></script>
+</body>
+</html>
