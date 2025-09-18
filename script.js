@@ -1,7 +1,7 @@
 class CattleIDApp {
     constructor() {
         this.model = null;
-        this.modelUrl = 'YOUR_TENSORFLOW_MODEL_URL_HERE'; // Replace with your actual model URL
+        this.modelUrl = 'https://teachablemachine.withgoogle.com/models/7AHQ0KxaX/'; // Replace with your actual model URL
         this.isModelLoaded = false;
         this.currentImage = null;
         this.stream = null;
